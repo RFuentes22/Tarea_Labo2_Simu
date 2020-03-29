@@ -1,8 +1,10 @@
+//Algunas partes de este codigo corresponde a instructores de la materia
+
 enum lines {NOLINE,SINGLELINE,DOUBLELINE};
 enum modes {NOMODE,INT_FLOAT,INT_INT_INT};
 enum parameters {THERMAL_CONDUCTIVITY,HEAT_SOURCE};
 enum sizes {NODES,ELEMENTS,DIRICHLET,NEUMANN};
-
+using namespace std;
 class item{
 
     protected:
@@ -47,7 +49,7 @@ class node: public item{
             x = x_coordinate;
         }
 
-        void setIntIntInt(int n1,int n2,int n3){
+        void setIntIntInt(int n1,int n2,int n3){ //id,node1,node2
         }
 };
 
@@ -77,8 +79,8 @@ class condition: public item{
 };
 
 class mesh{
-        float parameters[2];
-        int sizes[4]; 
+        float parameters[2]; // K Q
+        int sizes[4];  //La cantidad de nodos, elementos, condiciones de dirichlet y neumann
         node *node_list;
         element *element_list;
         condition *dirichlet_list;
@@ -128,4 +130,5 @@ class mesh{
             if(type == DIRICHLET) return dirichlet_list[i];
             else return neumann_list[i];
         }
+
 };
